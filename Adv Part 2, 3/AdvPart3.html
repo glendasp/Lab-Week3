@@ -1,3 +1,22 @@
+<!--
+In Essentials Part 2, you used user input to build HTML elements. On this page, try entering some
+HTML characters in the input box. What happens? How could this cause problems for a website? What
+could you do to account for this?
+
+I tested by entering the following code bellow and noticed that the browser interpreted as html code
+and added a new list to the list. This is not good since allow user to use html code and it might be
+use with bad intention. A way to solve this problem would be by replacing these special characters
+with space or validate with an error message as suggested in lab3-Adv3.
+
+code typed into the input:
+<ul> <li>new</li></ul>
+
+result showed:
+List:
+       1. ° add
+
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
