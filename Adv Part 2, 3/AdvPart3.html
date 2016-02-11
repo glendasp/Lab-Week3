@@ -26,6 +26,7 @@ List:
 <body>
 <p>Add an element: </p>
 
+<!--you might need to use onkeyup here - the letter won't be in the input until the user has finished typing it - when they have released the key -->
 <input type="text" id="text" name="userElement" onkeypress="validadeInput()" max="50"/>
 
 <button id="add" onclick="afterButton()"> Add new element </button>
@@ -72,15 +73,21 @@ List:
     }
 
     function validadeInput(){
+        
+        //This is going to be everything in the input box....
         var userElement = document.getElementById("text").value;
         var text = document.getElementById("text").value;
 
+        //So this isn't the right check. Try using userElement.indexOf('&') != -1 which will be true if there is a & in the string
         if (userElement == '&' || userElement == '<' || userElement == ">"
                 || userElement == "'" || userElement == "'"){
 
             alert('The following carachters are not allowed:  < > & \' and " ');
             // return false;
             event.returnValue = false;
+
+              //And once you have identified a banned character, you should remove it from the input - moddify document.getElementById("text").value
+              
 
         }
 
