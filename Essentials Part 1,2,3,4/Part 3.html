@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<p>Star Wars, <span class="rating">4 stars</span></p>.
+
+<p>Back to the Future, <span class="rating">5 stars</span></p>.
+
+<p> </p>
+
+
+
+<script>
+
+    var star = "<img height='32\' src=\"stars.png\">";
+    //var star = "*";
+    //var newrating = document.getElementsByClassName("rating");
+
+    show_image();
+
+    function show_image() {
+        var newrating = document.getElementsByClassName("rating");
+
+        for (var i in newrating){
+            //console.log(newrating[i]);
+            var pegaposicao = newrating[i].innerHTML.charAt(0);
+            console.log(pegaposicao);
+            if (pegaposicao > 0 && pegaposicao <= 5){
+                var listOfStars = "";
+                for (var j=0; j < pegaposicao; j++ ){
+                    listOfStars = listOfStars + star;
+                    console.log(listOfStars);
+                }
+                newrating[i].innerHTML=listOfStars;
+            }
+        }
+       // console.log()
+    }
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+
+<h1 id="pixels"> </h1>
+
+</body>
+
+<script>
+
+    document.body.onload = displaySize;
+    document.body.onresize = displaySize;
+    displaySize();
+
+    function displaySize(){
+        var pixels = window.innerWidth * window.innerHeight;
+        document.getElementById("pixels").innerHTML =  "Screen size is = " + pixels + " pixels";
+
+    }
+
+</script>
+
+</html>

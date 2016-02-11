@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <p>Add an element: </p>
+
+    <input type="text" id="text" name="userElement" max="50"/>
+
+    <button id="add" onclick="afterButton()"> Add new element </button>
+
+    <p> List: </p>
+    <ol id="list"> </ol>
+
+
+
+    <script>
+        // This function checks firstly if input is empty, if so,
+        // it shows an error message.
+        // The second validates if input is longer than 50 characters.
+        // After validating, it adds the new element to the list.
+        // Functions are called when user clicks the "add" button.
+
+        //var button = document.getElementById("add").addEventListener("click", CheckInput);
+
+        function afterButton(){
+            //check if empty
+            var userElement = document.getElementById("text").value;
+            var text = document.getElementById("text").value;
+           // var button = document.getElementById("add").addEventListener("click", addToList);
+
+
+            if (userElement == null || userElement == "") {//*** This part of the code was found on an example form w3schools
+                alert("Please, enter an element."); //***  The example from w3schools finish here.
+                return false;
+            }else if(text.length > 50) {
+                alert("Too long! Please enter try again.");
+                return false;///Validates if more than 50 characters
+            }else {
+                var userElement = document.getElementById("text").value;
+                var showlist = document.getElementById("list");
+                var newlist = document.createElement("li");
+
+                newlist.innerHTML = userElement;
+
+                showlist.appendChild(newlist);
+                console.log(newlist);
+            }
+        }
+
+    </script>
+</body>
+</html>

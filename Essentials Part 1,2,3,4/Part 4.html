@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab - Part 4 - </title>
+
+     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+</head>
+<body>
+
+<h2> Click on the but to generate random colors.</h2>
+<p> ** If you like a color, click on the save button **</p>
+
+<button  id="randomColorButton" onclick="changeToRandomColor(this)">Random Color</button>
+<br   /> <br />
+
+
+<button onclick="saveColor()"> Save color</button>
+<div id="UserChoice">
+    <table style="width:100%" id="colorTable">
+        <tr>
+
+            <th > Hex | RGB  </th>
+            <td id="hexrgb"></td>
+
+        </tr>
+    </table>
+</div>
+
+
+
+<script>
+
+    function changeToRandomColor(element) {
+
+        element.style.backgroundColor = randomColor();
+    }
+
+    function randomColor() {
+
+        var r = Math.floor(Math.random() * 255);   //Pick a random number between 0 and 1
+        var g = Math.floor(Math.random() * 255);   //Multiply by 255 to get a number in the correct range
+        var b = Math.floor(Math.random() * 255);   //Then convert it to an int
+
+        var colorString = "rgb(" + r + ", " + g + ", " + b + ")";
+
+        console.log(colorString);
+        return colorString
+
+
+    }
+
+    function saveColor() {
+        convert();
+        var savedButtonarray = document.getElementById("randomColorButton");
+        var colorchoice = savedButtonarray.style.backgroundColor;
+
+        //return colorchoice;
+
+        var slicecolors = colorchoice.split(", ");
+        slicecolors [0] = slicecolors[0].substring(4);
+        slicecolors [2] = slicecolors[2].replace(")", " ").trim();
+        var hexconvert = convert(slicecolors [0],slicecolors [1],slicecolors [2]);
+        //alert(hexconvert);
+       //alert(colorchoice);
+
+        //adding values on the table for RGB
+        //var rgbtable = document.getElementById("hexrgb");
+        //var newrgb = document.createElement("tr");
+        //newrgb.innerHTML = colorchoice;
+        //rgbtable.appendChild(newrgb);
+
+        //adding values on the table for HEX
+        var hextable = document.getElementById("hexrgb");
+        var newhex = document.createElement("tr");
+        var addinghex = "<td  id='hexrgb'>#" + hexconvert.toUpperCase() + "</td>";
+
+        newhex.innerHTML =  colorchoice + " | "+ addinghex;
+        hextable.appendChild(newhex);
+    }
+
+
+    function convert(r,g,b){
+
+        var hexr = parseInt(r).toString(16);
+        var hexg = parseInt(g).toString(16);
+        var hexb = parseInt(b).toString(16); // 2 elemetos string
+
+        //combination of hexs
+        var hexcolor = hexr+hexg+hexb;
+        return hexcolor;
+
+    }
+
+
+
+
+</script>
+
+
+</body>
+</html>
