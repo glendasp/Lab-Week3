@@ -27,7 +27,7 @@ List:
 <p>Add an element: </p>
 
 <!--you might need to use onkeyup here - the letter won't be in the input until the user has finished typing it - when they have released the key -->
-<input type="text" id="text" name="userElement" onkeypress="validadeInput()" max="50"/>
+<input type="text" id="text" name="userElement" onkeyup="validadeInput()" max="50"/>
 
 <button id="add" onclick="afterButton()"> Add new element </button>
 
@@ -49,7 +49,6 @@ List:
     //check if empty
     function afterButton(){
 
-
         var userElement = document.getElementById("text").value;
         var text = document.getElementById("text").value;
         // var button = document.getElementById("add").addEventListener("click", addToList);
@@ -68,6 +67,8 @@ List:
             newlist.innerHTML = userElement;
             showlist.appendChild(newlist);
             console.log(newlist);
+            document.getElementById("text").value = "";
+            document.getElementById("text").focus();
         }
 
     }
@@ -75,20 +76,27 @@ List:
     function validadeInput(){
         
         //This is going to be everything in the input box....
-        var userElement = document.getElementById("text").value;
-        var text = document.getElementById("text").value;
+        var userElement = document.getElementById("text").focus;
+        //var validation = ['&' ,'<' , '>'];
 
-        //So this isn't the right check. Try using userElement.indexOf('&') != -1 which will be true if there is a & in the string
-        if (userElement == '&' || userElement == '<' || userElement == ">"
-                || userElement == "'" || userElement == "'"){
+        //So this isn't the right check. Try using userElement.indexOf('&') != -1
+        // which will be true if there is a & in the string
+        if (userElement.indexOf('&') != -1) //I am testing with one character only to see if it would work but still not working.
+          /*      || userElement == '<'
+                || userElement == ">"
+                || userElement == "'"
+                || userElement == "'")*/
+        {
 
-            alert('The following carachters are not allowed:  < > & \' and " ');
+            alert('The following characters are not allowed:  < > & \' and " ');
             // return false;
             event.returnValue = false;
 
-              //And once you have identified a banned character, you should remove it from the input - moddify document.getElementById("text").value
-              
-
+            //And once you have identified a banned character, you should remove it from the input - moddify document.getElementById("text").value
+            document.getElementById("text").value = "";
+            document.getElementById("text").focus();
+        }else{
+            event.returnValue = false ;
         }
 
     }
