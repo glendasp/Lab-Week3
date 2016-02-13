@@ -76,31 +76,32 @@ List:
     function validadeInput(){
         
         //This is going to be everything in the input box....
-        var userElement = document.getElementById("text").focus;
+        //var userElement = document.getElementById("text").focus;
         //var validation = ['&' ,'<' , '>'];
 
         //So this isn't the right check. Try using userElement.indexOf('&') != -1
         // which will be true if there is a & in the string
-        if (userElement.indexOf('&') != -1) //I am testing with one character only to see if it would work but still not working.
-          /*      || userElement == '<'
+        /* if (event.keyCode == 60){
+            event.returnValue = false;
+        } //I am testing with one character only to see if it would work but still not working.
+                || userElement == '<'
                 || userElement == ">"
                 || userElement == "'"
                 || userElement == "'")*/
-        {
 
-            alert('The following characters are not allowed:  < > & \' and " ');
-            // return false;
-            event.returnValue = false;
+        //I decided to use the keyCode because it seems to be less complicated.
+        var x = event.keyCode;
+        if (x == 55 || x == 188 || x == 190 || x == 192 || x == 222) {  // 27 is the ESC key
+            alert('These characters < > & \' and " are not allowed');
+
+            //event.returnValue = false;
 
             //And once you have identified a banned character, you should remove it from the input - moddify document.getElementById("text").value
             document.getElementById("text").value = "";
             document.getElementById("text").focus();
-        }else{
-            event.returnValue = false ;
         }
 
     }
-
 
 </script>
 </body>
